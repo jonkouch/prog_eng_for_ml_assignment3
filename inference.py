@@ -7,8 +7,8 @@ import os
 model = joblib.load('digits_model.joblib')
 
 # Directory containing the images to be classified
-input_dir = '/input_images'
-output_dir = '/output_predictions'
+input_dir = 'input_images'
+output_dir = 'output_predictions'
 
 # Ensure the output directory exists
 os.makedirs(output_dir, exist_ok=True)
@@ -16,7 +16,7 @@ os.makedirs(output_dir, exist_ok=True)
 # Function to preprocess image and make prediction
 def classify_image(image_path):
     img = Image.open(image_path).convert('L')
-    img = img.resize((8, 8), Image.ANTIALIAS)
+    img = img.resize((8, 8), Image.LANCZOS)
     img_data = np.array(img).reshape(1, -1)
     prediction = model.predict(img_data)[0]
     return prediction

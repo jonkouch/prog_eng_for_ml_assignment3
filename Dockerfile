@@ -5,13 +5,14 @@ FROM python:3.10
 WORKDIR /usr/src/app
 
 # Copy the requirements.txt file from the host to the container
-COPY requirements.txt ./
+COPY requirements.txt .
 
 # Install the dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy the training script to the container
+# Copy the training script and inference script to the container
 COPY train_model.py .
+COPY inference.py .
 
 # Run the training script to train the model and save it
 RUN python train_model.py

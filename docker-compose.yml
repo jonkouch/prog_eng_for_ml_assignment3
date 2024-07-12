@@ -4,6 +4,6 @@ services:
   digits_classifier:
     build: .
     volumes:
-      - ./input_images:/input_images
-      - ./output_predictions:/output_predictions
+      - ./input_images:/usr/src/app/input_images
+      - ./output_predictions:/usr/src/app/output_predictions
     command: python inference.py
